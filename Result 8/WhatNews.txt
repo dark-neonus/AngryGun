@@ -1,0 +1,8 @@
+1.Change weapon mechanic
+2.Add meel weapons
+3.Add melee weapon select section in selection menu
+4.Translated the code to a more list type
+5.Change personages weapon rotate mechanic
+6.Fix weapon bugs
+7.Add melee attack
+8.Make function for visualization rect
