@@ -21,27 +21,27 @@ class PersSelector:
         self.floors_size[2] = Varis.one * 720 + self.floors_size[1]
         self.floors_size[3] = Varis.one * 720 + self.floors_size[2]
 
-        self.select_gun_width = Varis.block
+        self.select_gun_width = Varis.block / 1.5
 
-        self.RightArrow = pygame.transform.scale(Varis.RightArrow, (block * 2, block * 2))
-        self.LeftArrow = pygame.transform.scale(Varis.LeftArrow, (block * 2, block * 2))
+        self.RightArrow = pygame.transform.scale(Varis.RightArrow, (round(block * 2 / 1.5), round(block * 2 / 1.5)))
+        self.LeftArrow = pygame.transform.scale(Varis.LeftArrow, (round(block * 2 / 1.5), round(block * 2 / 1.5)))
 
         # Text
         self.text_color = (Varis.GREY120)
 
         # Pers selector
-        self.pers_name_font = pygame.font.SysFont('arial', Varis.block * 2)
+        self.pers_name_font = pygame.font.SysFont('arial', round(Varis.block * 2 / 1.5))
         self.pers_name_text = self.pers_name_font.render("", False, self.text_color)
         self.pers_name_rect = self.pers_name_text.get_rect()
 
-        self.pers_description_font = pygame.font.SysFont('arial', math.ceil(Varis.block * 1))
+        self.pers_description_font = pygame.font.SysFont('arial', math.ceil(Varis.block / 1.5))
         self.pers_description_text = self.pers_description_font.render("", False, self.text_color)
         self.pers_description_rect = self.pers_description_text.get_rect()
 
         self.icons_line_count = 10
 
         # Gun selector
-        self.gun_name_font = pygame.font.SysFont('arial', Varis.block * 2)
+        self.gun_name_font = pygame.font.SysFont('arial', round(Varis.block * 2 / 1.5))
         self.gun_name_text = self.gun_name_font.render("", False, self.text_color)
         self.gun_name_rect = self.gun_name_text.get_rect()
 
@@ -50,12 +50,12 @@ class PersSelector:
         self.GunLeftArrow = self.LeftArrow
         self.GunLeftArrow_rect = self.GunLeftArrow.get_rect()
 
-        self.gun_description_font = pygame.font.SysFont('arial', Varis.block * 1)
+        self.gun_description_font = pygame.font.SysFont('arial', round(Varis.block / 1.5))
         self.gun_description_text = self.gun_description_font.render("", False, self.text_color)
         self.gun_description_rect = self.gun_description_text.get_rect()
 
         # Melee selector
-        self.melee_name_font = pygame.font.SysFont('arial', Varis.block * 2)
+        self.melee_name_font = pygame.font.SysFont('arial', round(Varis.block * 2 / 1.5))
         self.melee_name_text = self.melee_name_font.render("", False, self.text_color)
         self.melee_name_rect = self.melee_name_text.get_rect()
 
@@ -64,39 +64,39 @@ class PersSelector:
         self.MeleeLeftArrow = self.LeftArrow
         self.MeleeLeftArrow_rect = self.MeleeLeftArrow.get_rect()
 
-        self.melee_description_font = pygame.font.SysFont('arial', Varis.block * 1)
+        self.melee_description_font = pygame.font.SysFont('arial', round(Varis.block * 1 / 1.5))
         self.melee_description_text = self.melee_description_font.render("", False, self.text_color)
         self.melee_description_rect = self.melee_description_text.get_rect()
 
 
 
     def draw_pers_tab(self):
-        pygame.draw.rect(screen, self.text_color, (Varis.block, self.start_pos + self.floors_size[0], Varis.screen_w - Varis.block * 2, Varis.tile), 0, math.ceil(Varis.one * 1))
-        screen.blit(pygame.transform.scale(Varis.Pers_info_list[Varis.Pers_chose_index][0], (Varis.block * 8, Varis.block * 8)), (Varis.block * 4, self.start_pos + self.floors_size[0] + Varis.block * 3))
+        pygame.draw.rect(screen, self.text_color, (Varis.block / 1.5, self.start_pos + self.floors_size[0], Varis.screen_w - Varis.block * 2 / 1.5, round(Varis.tile / 1.5)), 0, math.ceil(Varis.one * 1))
+        screen.blit(pygame.transform.scale(Varis.Pers_info_list[Varis.Pers_chose_index][0], (round(Varis.block * 8 / 1.5), round(Varis.block * 8 / 1.5))), (round(Varis.block * 4 / 1.5), self.start_pos + self.floors_size[0] + round(Varis.block * 3 / 1.5)))
 
         self.pers_name_text = self.pers_name_font.render(Varis.Pers_info_list[Varis.Pers_chose_index][1], False, self.text_color)
         self.pers_name_rect = self.pers_name_text.get_rect()
-        self.pers_name_rect.left = Varis.block * 14
-        self.pers_name_rect.top = self.start_pos + self.floors_size[0] + Varis.block * 3
+        self.pers_name_rect.left = Varis.block * 14 / 1.5
+        self.pers_name_rect.top = self.start_pos + self.floors_size[0] + Varis.block * 3 / 1.5
 
         screen.blit(self.pers_name_text, self.pers_name_rect)
 
         self.pers_description_text = self.pers_description_font.render(Varis.Pers_info_list[Varis.Pers_chose_index][2], False, self.text_color)
         self.pers_description_rect = self.pers_description_text.get_rect()
-        self.pers_description_rect.left = Varis.block * 14
-        self.pers_description_rect.top = self.start_pos + self.floors_size[0] + Varis.block * 7
+        self.pers_description_rect.left = Varis.block * 14 / 1.5
+        self.pers_description_rect.top = self.start_pos + self.floors_size[0] + Varis.block * 7 / 1.5
 
         screen.blit(self.pers_description_text, self.pers_description_rect)
 
         for i in range(self.icons_line_count):
-            tab_size = (screen_w - Varis.block * 5) / self.icons_line_count
-            icon_rect = [Varis.block * 4 + tab_size * i, self.start_pos + self.floors_size[0] + Varis.block * 14, Varis.Pers_icon_size[0], Varis.Pers_icon_size[1]]
+            tab_size = (screen_w - Varis.block * 5 / 1.5) / self.icons_line_count
+            icon_rect = [Varis.block * 4 / 1.5 + tab_size * i, self.start_pos + self.floors_size[0] + Varis.block * 14 / 1.5, round(Varis.Pers_icon_size[0] / 1.5), round(Varis.Pers_icon_size[1] / 1.5)]
             Varis.Pers_info_list[i][3] = icon_rect
             screen.blit(pygame.transform.scale(Varis.Pers_info_list[i][0], (Varis.Pers_info_list[i][3][2], Varis.Pers_info_list[i][3][3])), Varis.Pers_info_list[i][3])
 
         for i in range(self.icons_line_count):
-            tab_size = (screen_w - Varis.block * 5) / self.icons_line_count
-            icon_rect = [Varis.block * 4 + tab_size * i, self.start_pos + self.floors_size[0] + Varis.block * 14 + tab_size, Varis.Pers_icon_size[0], Varis.Pers_icon_size[1]]
+            tab_size = (screen_w - Varis.block * 5 / 1.5) / self.icons_line_count
+            icon_rect = [Varis.block * 4 / 1.5 + tab_size * i, self.start_pos + self.floors_size[0] + Varis.block * 14 / 1.5 + tab_size, round(Varis.Pers_icon_size[0] / 1.5), round(Varis.Pers_icon_size[1] / 1.5)]
             Varis.Pers_info_list[i + 10][3] = icon_rect
             screen.blit(pygame.transform.scale(Varis.Pers_info_list[i + 10][0], (Varis.Pers_info_list[i + 10][3][2], Varis.Pers_info_list[i + 10][3][3])), Varis.Pers_info_list[i + 10][3])
         for i in range(len(Varis.Pers_info_list)):
@@ -105,16 +105,16 @@ class PersSelector:
 
 
     def draw_long_range_weapon(self):
-        pygame.draw.rect(screen, self.text_color, (Varis.block, self.start_pos + self.floors_size[1], Varis.screen_w - Varis.block * 2, Varis.tile), 0, math.ceil(Varis.one * 1))
+        pygame.draw.rect(screen, self.text_color, (Varis.block / 1.5, self.start_pos + self.floors_size[1], Varis.screen_w - Varis.block * 2, round(Varis.tile / 1.5)), 0, math.ceil(Varis.one * 1))
 
         self.gun_name_text = self.gun_name_font.render(Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][2], False, self.text_color)
         self.gun_name_rect = self.gun_name_text.get_rect()
-        self.gun_name_rect.center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[1] + Varis.block * 6)
+        self.gun_name_rect.center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[1] + Varis.block * 6 / 1.5)
 
         screen.blit(self.gun_name_text, self.gun_name_rect)
 
         #self.select_gun_width = Varis.pers_gun_info_list[Varis.Select_pers_list_index][0].get_rect()[2]
-        Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[1] + Varis.block * 10)
+        Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[1] + Varis.block * 10 / 1.5)
         Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].size = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][0].get_rect()[2], Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][0].get_rect()[3])
 
         #Varis.pers_gun_info_list[Varis.Select_pers_list_index][4] = [round((Varis.screen_w - self.select_gun_width) / 2), self.start_pos + self.floors_size[1] + Varis.block * 5, self.select_gun_width, Varis.pers_gun_info_list[Varis.Select_pers_list_index][0].get_rect()[3]]
@@ -141,35 +141,35 @@ class PersSelector:
         Varis.side_gun_info_list[0][1] = Varis.side_gun_info_list[0][0].get_rect()
         Varis.side_gun_info_list[1][1] = Varis.side_gun_info_list[1][0].get_rect()
 
-        Varis.side_gun_info_list[0][1].center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx - Varis.block * 12, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
-        Varis.side_gun_info_list[1][1].center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx + Varis.block * 12, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
+        Varis.side_gun_info_list[0][1].center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx - Varis.block * 12 / 1.5, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
+        Varis.side_gun_info_list[1][1].center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx + Varis.block * 12 / 1.5, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
 
         screen.blit(Varis.side_gun_info_list[0][0], Varis.side_gun_info_list[0][1])
         screen.blit(Varis.side_gun_info_list[1][0], Varis.side_gun_info_list[1][1])
 
-        self.GunRightArrow_rect.center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx + Varis.block * 6, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
+        self.GunRightArrow_rect.center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx + Varis.block * 6 / 1.5, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
         screen.blit(self.GunRightArrow, self.GunRightArrow_rect)
 
-        self.GunLeftArrow_rect.center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx - Varis.block * 6, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
+        self.GunLeftArrow_rect.center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx - Varis.block * 6 / 1.5, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery)
         screen.blit(self.GunLeftArrow, self.GunLeftArrow_rect)
 
         self.gun_description_text = self.gun_description_font.render(Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][3], False, self.text_color)
         self.gun_description_rect = self.gun_description_text.get_rect()
-        self.gun_description_rect.center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery + Varis.block * 3)
+        self.gun_description_rect.center = (Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centerx, Varis.pers_gun_info_list[Varis.Select_pers_list_index[0]][4].centery + Varis.block * 3 / 1.5)
         screen.blit(self.gun_description_text, self.gun_description_rect)
 
     def draw_melee_weapon(self):
-        pygame.draw.rect(screen, self.text_color, (Varis.block, self.start_pos + self.floors_size[2], Varis.screen_w - Varis.block * 2, Varis.tile), 0, math.ceil(Varis.one * 1))
+        pygame.draw.rect(screen, self.text_color, (Varis.block / 1.5, self.start_pos + self.floors_size[2], Varis.screen_w - Varis.block * 2 / 1.5, round(Varis.tile / 1.5)), 0, math.ceil(Varis.one * 1))
 
 
         self.melee_name_text = self.melee_name_font.render(Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][2], False, self.text_color)
         self.melee_name_rect = self.melee_name_text.get_rect()
-        self.melee_name_rect.center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[2] + Varis.block * 6)
+        self.melee_name_rect.center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[2] + Varis.block * 6 / 1.5)
 
         screen.blit(self.melee_name_text, self.melee_name_rect)
 
         #self.select_gun_width = Varis.pers_gun_info_list[Varis.Select_pers_list_index][0].get_rect()[2]
-        Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[2] + Varis.block * 10)
+        Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].center = (round(Varis.screen_w / 2), self.start_pos + self.floors_size[2] + Varis.block * 10 / 1.5)
         Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].size = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][0].get_rect()[2], Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][0].get_rect()[3])
 
         #Varis.pers_gun_info_list[Varis.Select_pers_list_index][4] = [round((Varis.screen_w - self.select_gun_width) / 2), self.start_pos + self.floors_size[1] + Varis.block * 5, self.select_gun_width, Varis.pers_gun_info_list[Varis.Select_pers_list_index][0].get_rect()[3]]
@@ -196,21 +196,21 @@ class PersSelector:
         Varis.side_melee_info_list[0][1] = Varis.side_melee_info_list[0][0].get_rect()
         Varis.side_melee_info_list[1][1] = Varis.side_melee_info_list[1][0].get_rect()
 
-        Varis.side_melee_info_list[0][1].center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx - Varis.block * 12, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
-        Varis.side_melee_info_list[1][1].center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx + Varis.block * 12, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
+        Varis.side_melee_info_list[0][1].center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx - Varis.block * 12 / 1.5, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
+        Varis.side_melee_info_list[1][1].center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx + Varis.block * 12 / 1.5, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
 
         screen.blit(Varis.side_melee_info_list[0][0], Varis.side_melee_info_list[0][1])
         screen.blit(Varis.side_melee_info_list[1][0], Varis.side_melee_info_list[1][1])
 
-        self.MeleeRightArrow_rect.center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx + Varis.block * 6, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
+        self.MeleeRightArrow_rect.center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx + Varis.block * 6 / 1.5, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
         screen.blit(self.MeleeRightArrow, self.MeleeRightArrow_rect)
 
-        self.MeleeLeftArrow_rect.center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx - Varis.block * 6, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
+        self.MeleeLeftArrow_rect.center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx - Varis.block * 6 / 1.5, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery)
         screen.blit(self.MeleeLeftArrow, self.MeleeLeftArrow_rect)
 
         self.melee_description_text = self.melee_description_font.render(Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][3], False, self.text_color)
         self.melee_description_rect = self.melee_description_text.get_rect()
-        self.melee_description_rect.center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery + Varis.block * 3)
+        self.melee_description_rect.center = (Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centerx, Varis.pers_melee_info_list[Varis.Select_pers_list_index[1]][4].centery + Varis.block * 3 / 1.5)
         screen.blit(self.melee_description_text, self.melee_description_rect)
 
     def drawSelector(self):
@@ -244,9 +244,9 @@ class PersSelector:
 
 
                 if event.key == pygame.K_UP or event.key == pygame.K_w or (event.type == pygame.MOUSEBUTTONDOWN and event.button == 4):
-                    self.start_pos = min(self.start_pos + Varis.block, self.max_start_pos)
+                    self.start_pos = min(self.start_pos + Varis.block / 1.5, self.max_start_pos)
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_s or (event.type == pygame.MOUSEBUTTONDOWN and event.button == 5):
-                    self.start_pos = max(self.start_pos - Varis.block, self.min_start_pos)
+                    self.start_pos = max(self.start_pos - Varis.block / 1.5, self.min_start_pos)
 
 
             pressed = pygame.mouse.get_pressed()
@@ -292,11 +292,11 @@ class PersSelector:
             elif event.type == pygame.MOUSEWHEEL:
                 if event.y == 1:
                     for q in range(8):
-                        self.start_pos = min(self.start_pos + Varis.tile, self.max_start_pos)
+                        self.start_pos = min(self.start_pos + round(Varis.tile / 1.5), self.max_start_pos)
                         self.drawSelector()
                 if event.y == -1:
                     for q in range(8):
-                        self.start_pos = max(self.start_pos - Varis.tile, self.min_start_pos)
+                        self.start_pos = max(self.start_pos - round(Varis.tile / 1.5), self.min_start_pos)
                         self.drawSelector()
 
             self.mouse_pos = pygame.mouse.get_pos()
@@ -313,11 +313,11 @@ class PersSelector:
 
         for i in range(len(Varis.pers_gun_info_list)):
             self.select_gun_width = Varis.pers_gun_info_list[i][0].get_rect()[2]
-            Varis.pers_gun_info_list[i][4].center = (round((Varis.screen_w + Varis.pers_gun_info_list[i][0].get_rect()[2]) / 2), self.start_pos + self.floors_size[1] + Varis.block * 5)
+            Varis.pers_gun_info_list[i][4].center = (round((Varis.screen_w + Varis.pers_gun_info_list[i][0].get_rect()[2]) / 2), self.start_pos + self.floors_size[1] + Varis.block * 5 / 1.5)
             Varis.pers_gun_info_list[i][4].size = (Varis.pers_gun_info_list[i][0].get_rect()[2], Varis.pers_gun_info_list[i][0].get_rect()[3])
         for i in range(len(Varis.pers_melee_info_list)):
             self.select_gun_width = Varis.pers_melee_info_list[i][0].get_rect()[2]
-            Varis.pers_melee_info_list[i][4].center = (round((Varis.screen_w + Varis.pers_melee_info_list[i][0].get_rect()[2]) / 2), self.start_pos + self.floors_size[2] + Varis.block * 5)
+            Varis.pers_melee_info_list[i][4].center = (round((Varis.screen_w + Varis.pers_melee_info_list[i][0].get_rect()[2]) / 2), self.start_pos + self.floors_size[2] + Varis.block * 5 / 1.5)
             Varis.pers_melee_info_list[i][4].size = (Varis.pers_melee_info_list[i][0].get_rect()[2], Varis.pers_melee_info_list[i][0].get_rect()[3])
 
 

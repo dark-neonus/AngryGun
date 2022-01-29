@@ -25,21 +25,40 @@ class Menu:
         self.Elem_info = Elem_info
         self.PSelector = PersSelector()
 
+        # Varis.BG_Audios[0].play(-1)
+
     def clear_temp_data(self):
         global game
-        Varis.pers_weapon_angle = 0
+
         Varis.can_continue = False
-        Varis.pers_pos = [round(Varis.game_screen_w / 2), round(Varis.game_screen_h / 2)]
+        Varis.Personage = 0
+
+        Varis.start_pos = [0, 0]
+
+        Varis.pers_pos = [round(game_screen_w / 2), round(game_screen_h / 2)]
+        Varis.pers_size = [block, block]
+        Varis.pers_cen = [pers_pos[0] + round(pers_size[0] / 2), pers_pos[1] + round(pers_size[1] / 2)]
+        Varis.pers_weapon_angle = 0
+        Varis.pers_weapon_image_angle = 0
+        Varis.pers_weapon_fake_angle = 0
+        Varis.pers_weapon_cen = [pers_cen[0], pers_cen[1]]
+
         Varis.hp = 10
+
         Varis.Pers_current_weapon_info_list[1] = 0
         Varis.Weapon_type_select_list = [True, False]
         Varis.Select_weapon_id = Varis.Select_weap_list_of_id[0][Varis.Select_pers_list_index[Varis.Pers_current_weapon_info_list[1]]]
 
-        for bullet_group in Varis.Guns_bullets_group_list:
-            bullet_group.empty()
+        Varis.tile_map_matrix = []
+        Varis.Hard_objects_list = []
         Varis.create_tile_map()
 
+        for bullet_group in Varis.Guns_bullets_group_list:
+            bullet_group.empty()
+        # Varis.create_tile_map()
+
         game = Play.Game()
+        game.game_generate()
 
     def EXIT(self):
         pygame.display.quit()
@@ -48,7 +67,9 @@ class Menu:
 
     def play_game(self):
         Varis.for_but_is_click = False
+        #Varis.BG_Audios[0].stop()
         game.in_game()
+        #Varis.BG_Audios[0].play(-1)
         self.chose_index = 0
 
     def continue_game(self):
@@ -57,6 +78,7 @@ class Menu:
     def PersSelector(self):
         self.PSelector.inSelector()
         self.chose_index = self.Menu_elem.index("Pers Selector")
+
 
 
     def draw_menu(self):
